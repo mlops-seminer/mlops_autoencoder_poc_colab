@@ -194,7 +194,8 @@ def main(cfg: DictConfig):
                 mlflow.pytorch.log_model(
                     model,
                     artifact_path=model_name_conf,
-                    registered_model_name=registered_model_name
+                    registered_model_name=registered_model_name,
+                    serialization_format="pickle" #MLflow 3.0以降ではpickle形式での保存が必須
                 )
                 # state_dictファイルもアーティファクトとして残したければ以下をコメントアウト解除
                 # mlflow.log_artifact(model_file_path)
