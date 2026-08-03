@@ -1,11 +1,5 @@
-# MLOps Autoencoder - Colab持ち帰り版
-
-元の `main.py`、`model.py`、`dataset.py` は変更していません。
-
-変更したのは `config/config.yaml` の次の2項目だけです。
-
-- `dataset.root_dir`: `autoencoder_poc/data/kinoko` → `data/kinoko`
-- `mlflow.tracking_uri`: `http://localhost:8080` → `sqlite:///mlflow.db`
+# MLOps Autoencoder - Colab版
+きのこの山異常検知モデルのPOCをColab上で体験できるようにしました。
 
 ## Colabでの実行
 
