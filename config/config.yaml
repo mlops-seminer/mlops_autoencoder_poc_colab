@@ -1,0 +1,43 @@
+dataset:
+  root_dir: "data/kinoko"  # データセットのルートディレクトリ
+  train_dir: "train/good"                  # トレーニングデータのサブディレクトリ
+  test_dir: "test"                         # テストデータのサブディレクトリ
+  input_size: [256, 256]                    # 入力画像のサイズ
+  channels: 3                               # RGB画像なら3、グレースケールなら1
+  validation_ratio: 0.1
+  batch_size: 32
+  num_workers: 0
+
+model:
+  # 再学習元モデルと同じ構造を指定してください。
+  enc_channels: [32, 64]
+  latent_dim: 2
+
+training:
+  epochs: 10
+  learning_rate: 0.0000001
+  early_stopping_patience: 5
+
+  # 再学習設定
+  resume:
+    enabled: false              # true: 学習済みモデルから再学習、false: 新規学習
+    source: "registry"          # registry または local
+
+    # --- MLflow Model Registryから取得する場合 ---
+    registered_model_name: "kinoko"
+    model_alias: null     # 例: champion
+    model_version: latest          # バージョン指定.aliasが優先される
+    model_uri: null              # 直接指定例: "models:/kinoko@champion"
+
+    # --- ローカルのstate_dictを使う場合 ---
+    local_path: null             # 例: "models/autoencoder_model.pth"
+
+  # 旧設定との後方互換用。新規利用ではresume.local_pathを推奨
+  resume_model_path: null
+
+mlflow:
+  experiment_name: "Autoencoder_Anomaly_Detection"
+  tracking_uri: "sqlite:///mlflow.db"
+  run_name: null
+  model_name: "autoencoder_model"      # Run内のartifact_path
+  registered_model_name: null      # 学習後にModel Registryへ自動登録する名前。nullなら登録しない
