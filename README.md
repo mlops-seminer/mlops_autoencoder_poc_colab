@@ -9,7 +9,7 @@
 
 ## Colabでの実行
 
-1. Colabを開きランタイムから「ランタイムのタイプを変更」を選択しGPU環境にします。
+1. Colabを開きます。
 2. 新しいノートブックを開き以下を実行します。
 ドライブと連携します。
 ```
@@ -28,6 +28,7 @@ GitHubからプロジェクトをcloneします。
 !git clone https://github.com/mlops-seminer/mlops_autoencoder_poc_colab.git
 ```
 2. Driveにmlops_autoencoder_poc_colabが保存されるので`mlops_autoencoder_colab_minimal.ipynb` をColabで開きます。
-3. 上から順番にセルを実行します。
+3. ランタイムから「ランタイムのタイプを変更」を選択しGPU環境にします。
+4.config.yamlで設定を行い上から順番にセルを実行します。
 
 MLflowの履歴はプロジェクトフォルダ内の `mlflow.db` と `mlartifacts/` に保存されます。
