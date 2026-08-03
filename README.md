@@ -1,4 +1,4 @@
-# MLOps Autoencoder - Colab持ち帰り版（最小変更）
+# MLOps Autoencoder - Colab持ち帰り版
 
 元の `main.py`、`model.py`、`dataset.py` は変更していません。
 
@@ -9,9 +9,25 @@
 
 ## Colabでの実行
 
-1. このフォルダをGoogle Driveの `MyDrive` に保存します。
-2. `mlops_autoencoder_colab_minimal.ipynb` をColabで開きます。
-3. `PROJECT_DIR` を実際の保存先に合わせます。
-4. 上から順番にセルを実行します。
+1. Colabを開きランタイムから「ランタイムのタイプを変更」を選択しGPU環境にします。
+2. 新しいノートブックを開き以下を実行します。
+ドライブと連携します。
+```
+from google.colab import drive
+drive.mount("/content/drive")
+```
+保存先に移動します
+```
+import os
+DRIVE_DIR = "/content/drive/MyDrive"
+os.chdir(DRIVE_DIR)
+print(os.getcwd())
+```
+GitHubからプロジェクトをcloneします。
+```
+!git clone https://github.com/mlops-seminer/mlops_autoencoder_poc_colab.git
+```
+2. Driveにmlops_autoencoder_poc_colabが保存されるので`mlops_autoencoder_colab_minimal.ipynb` をColabで開きます。
+3. 上から順番にセルを実行します。
 
 MLflowの履歴はプロジェクトフォルダ内の `mlflow.db` と `mlartifacts/` に保存されます。
